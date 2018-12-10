@@ -1,0 +1,76 @@
+    <div>
+        <div class="container fonttable" id="fonttable">
+            <div class="page-header">
+                <div>
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-1">
+                            Размер
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input name="maininput" placeholder="Начните печатать текст" type="text" v-model="maininput">
+                            </input>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" v-for="(item, index) in fontAr" v-if="index % 3 == 0">
+                <div class="col-md-4 fontelem">
+                    <div class="row fontname pd5">
+                        {{item}}
+                    </div>
+                    <div class="row text" v-bind:style="{ fontFamily : item, fontSize: fontSize + 'px' }">
+                        {{maininput}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11">
+                        </div>
+                        <div class="col-md">
+                            <button>
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fontelem">
+                    <div class="row fontname pd5">
+                        {{fontAr[index+1]}}
+                    </div>
+                    <div class="row text" v-bind:style="{ fontFamily : fontAr[index+1], fontSize: fontSize + 'px' }">
+                        {{maininput}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11">
+                        </div>
+                        <div class="col-md">
+                            <button>
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fontelem">
+                    <div class="row fontname pd5">
+                        {{fontAr[index+2]}}
+                    </div>
+                    <div class="row text" v-bind:style="{ fontFamily : fontAr[index+2], fontSize: fontSize + 'px' }">
+                        {{maininput}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11">
+                        </div>
+                        <div class="col-md">
+                            <button>
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,4 +1,4 @@
-import style from './../css/style.css';
+// import style from './../css/style.css';
 import Vue from 'vue'
 import App from './App.vue'
 new Vue({
