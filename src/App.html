@@ -1,26 +1,54 @@
     <div>
         <div class="container fonttable" id="fonttable">
-            <div class="page-header">
+            <h1 style="text-align:  center;">Страница для подбора размера и <br> типа шрифтов для сайта</h1>
+            <h2></h2>
+            <div class="" style="margin-bottom: 20px;">
                 <div>
-                    <div class="row">
-                        <div class="col-md-4">
+                    <div class="row rwi">
+                        <div class="col-md-12">
+                        <p style="font-size: 1.2em;">Изменяйте размер шрифта кнопками "+" и "-", добавляйте шрифт в  список необходимых шрифтов, нажимая на галочку</p>
+                        </div>                        
+                    </div>
+                    <div class="row rwi">
+                        <div class="col-md-5">
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2" style="text-align: center; ">
                             Размер
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                    <div class="row rwi">
+                        <div class="col-md-5">
                             <input name="maininput" placeholder="Начните печатать текст" type="text" v-model="maininput">
                             </input>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-1" style="">
+                            <button type="button" class="btn btn-default" v-on:click="fontSizeInc()">
+                            <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> 
+                            </button>
+                        </div>
+                        <div class="col-md-1" style="">                        
+                            <button type="button" class="btn btn-default" v-on:click="fontSizeDec()">
+                            <span class="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span> 
+                            </button>                            
                         </div>
                     </div>
+                    <div class="row cssinfo rwi" style="clear: both;">
+                        <div class="col-md-2">
+                            font-size: 
+                            <span class="label label-default">{{fontSize}}px</span>
+                        </div>
+                        <div class="col-md-10" style="">
+                         font-family: 
+                         <span v-for="(item, index) in selectedFonts">
+                            <span class="label label-default">{{item}}</span>
+                         <span v-show="selectedFonts.length && index != selectedFonts.length -1 ">, </span>
+                     </span>
+                        </div>
+                    </div>                      
                 </div>
-            </div>
+                </div>
             <div class="row" v-for="(item, index) in fontAr" v-if="index % 3 == 0">
-                <div class="col-md-4 fontelem">
+                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(item)}">
                     <div class="row fontname pd5">
                         {{item}}
                     </div>
@@ -30,14 +58,19 @@
                     <div class="row">
                         <div class="col-md-11">
                         </div>
-                        <div class="col-md">
-                            <button>
-                                +
-                            </button>
+                        <div v-if="!isSelected(item)" class="col-md">
+                            <button type="button" class="btn btn-default" v-on:click="addToSelected(item)">
+                            <span class="glyphicon glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 
+                            </button>    
                         </div>
+                        <div v-else class="col-md">
+                            <button type="button" class="btn btn-default" v-on:click="removeFromSelected(item)">
+                            <span class="glyphicon glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 
+                            </button>    
+                        </div> 
                     </div>
                 </div>
-                <div class="col-md-4 fontelem">
+                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(fontAr[index+1])}">
                     <div class="row fontname pd5">
                         {{fontAr[index+1]}}
                     </div>
@@ -47,14 +80,19 @@
                     <div class="row">
                         <div class="col-md-11">
                         </div>
-                        <div class="col-md">
-                            <button>
-                                +
-                            </button>
+                        <div v-if="!isSelected(fontAr[index+1])" class="col-md">
+                            <button type="button" class="btn btn-default" v-on:click="addToSelected(fontAr[index+1])">
+                            <span class="glyphicon glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 
+                            </button>    
                         </div>
+                        <div v-else class="col-md">
+                            <button type="button" class="btn btn-default" v-on:click="removeFromSelected(fontAr[index+1])">
+                            <span class="glyphicon glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 
+                            </button>    
+                        </div> 
                     </div>
                 </div>
-                <div class="col-md-4 fontelem">
+                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(fontAr[index+2])}">
                     <div class="row fontname pd5">
                         {{fontAr[index+2]}}
                     </div>
@@ -64,11 +102,16 @@
                     <div class="row">
                         <div class="col-md-11">
                         </div>
-                        <div class="col-md">
-                            <button>
-                                +
-                            </button>
+                        <div v-if="!isSelected(fontAr[index+2])" class="col-md">
+                            <button type="button" class="btn btn-default" v-on:click="addToSelected(fontAr[index+2])">
+                            <span class="glyphicon glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 
+                            </button>    
                         </div>
+                        <div v-else class="col-md">
+                            <button type="button" class="btn btn-default" v-on:click="removeFromSelected(fontAr[index+2])">
+                            <span class="glyphicon glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 
+                            </button>    
+                        </div>                        
                     </div>
                 </div>
             </div>
