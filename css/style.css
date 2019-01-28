@@ -4,7 +4,7 @@ background: #e5efe9;
 color: #430709;
 font-size: 14px;
 }
-body input, .fonttable .text
+body input[type=text], .fonttable .text
 {
 	background: #bf9a7fd6;
 	height: 45px;
@@ -40,6 +40,17 @@ body input, .fonttable .text
 	 box-sizing: border-box;
 }
 
+
+.fonttable .italic
+{
+  font-style: italic;
+} 
+
+
+.fonttable .bold
+{
+	font-weight: bold;
+} 
 
 .fonttable .fontname
 {

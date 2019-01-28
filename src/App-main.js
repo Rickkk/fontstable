@@ -10,6 +10,30 @@ import Vue from 'vue';
 // let = "abc";
 // import HelloComponent from './components/HelloComponent.vue'
 var fontAr = [
+'Roboto', 
+'Open Sans', 
+'Montserrat', 
+'Noto Serif SC', 
+'Roboto Condensed', 
+'Source Sans Pro', 
+'Oswald', 
+'PT Sans',
+'Roboto Slab',
+'Merriweather',
+'Noto Sans', 
+'Ubuntu', 
+'Open Sans Condensed', 
+'Playfair Display',
+'Roboto Mono', 
+'Lora',
+'PT Serif',
+'Arimo', 
+'PT Sans Narrow', 
+'Fira Sans', 
+'Noto Serif',
+'Rubik', 
+'Lobster', 
+'Exo 2',
 'Arial',
 'Helvetica',
 'Times New Roman',
@@ -24,7 +48,8 @@ var fontAr = [
 'Comic Sans MS',
 'Trebuchet MS',
 'Arial Black',
-'Impact']
+'Impact' 
+]
 export default {
     // components:{
     //     'section-footer':footer
@@ -41,11 +66,17 @@ export default {
   		fontAr: fontAr,
   		fontSize: 14,
       fontFamilyList: '',
-      selectedFonts: []
+      selectedFonts: [],
+      isBold: false,
+      isItalic: false
   	}
   },
   methods:
   {
+    getFontName: function(name)
+    {
+      return name + ', sans-serif;';
+    },
     fontSizeInc: function()
     {
       this.fontSize++;

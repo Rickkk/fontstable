@@ -12,9 +12,14 @@
                     <div class="row rwi">
                         <div class="col-md-5">
                         </div>
-                        <div class="col-md-2" style="text-align: center; ">
-                            Размер
+                        <div class="col-md-2" style="text-align: center; font-size: 18px; ">
                         </div>
+                        <div class="col-md-2" style="text-align: center; font-size: 18px; ">
+                            
+                        </div>
+                        <div class="col-md-2" style="text-align: center; font-size: 18px; ">
+                            
+                        </div>                                                
                     </div>
                     <div class="row rwi">
                         <div class="col-md-5">
@@ -31,6 +36,12 @@
                             <span class="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span> 
                             </button>                            
                         </div>
+                        <div class="col-md-2" style="text-align: center; font-size: 18px; ">
+                            <input type="checkbox" name="bold" v-model="isBold"/>&nbsp;Жирный
+                        </div>
+                        <div class="col-md-2" style="text-align: center; font-size: 18px; ">
+                            <input type="checkbox" name="italic" v-model="isItalic"/>&nbsp;Курсив
+                        </div>                        
                     </div>
                     <div class="row cssinfo rwi" style="clear: both;">
                         <div class="col-md-2">
@@ -48,7 +59,7 @@
                 </div>
                 </div>
             <div class="row" v-for="(item, index) in fontAr" v-if="index % 3 == 0">
-                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(item)}">
+                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(item), italic: isItalic, bold: isBold}">
                     <div class="row fontname pd5">
                         {{item}}
                     </div>
@@ -70,7 +81,7 @@
                         </div> 
                     </div>
                 </div>
-                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(fontAr[index+1])}">
+                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(fontAr[index+1]), italic: isItalic, bold: isBold}">
                     <div class="row fontname pd5">
                         {{fontAr[index+1]}}
                     </div>
@@ -92,7 +103,7 @@
                         </div> 
                     </div>
                 </div>
-                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(fontAr[index+2])}">
+                <div class="col-md-4 fontelem"  v-bind:class="{ isselected: isSelected(fontAr[index+2]), italic: isItalic, bold: isBold}">
                     <div class="row fontname pd5">
                         {{fontAr[index+2]}}
                     </div>
