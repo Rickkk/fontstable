@@ -49,18 +49,17 @@
                 <span class="label label-default">{{fontSize}}px</span>
               </div>
               <div class="col-md-8" style="">
-                font-family:
+                font-family<span v-show="selectedFonts.length">
+                  (<a style="cursor: pointer;" v-on:click.prevent ="selectedFonts = []">очистить</a>)
+                </span>:
                 <span v-for="(item, index) in selectedFonts">
                   <span class="label label-default">{{item}}</span>
                   <span v-show="selectedFonts.length && index != selectedFonts.length -1 ">, </span>
                 </span>
               </div>
-              <div class="col-md-2">
-              <button type="button" class="btn" v-bind:class="[isAbleCopy]" v-bind:disabled="this.selectedFonts.length == 0">Копировать стиль</button>
-                 </div>
             </div>
             <div class="row top5 ">
-              <div class="col-md-12">
+              <div class="col-md-10">
                 <span v-show="isItalic">
                 font-style: italic;
                 </span>
@@ -69,6 +68,11 @@
                   font-weight: bold;
                 </span>
               </div>
+              <div class="col-md-2">
+              <button type="button" class="btn" v-bind:class="[isAbleCopy]"
+              v-bind:disabled="this.selectedFonts.length == 0"
+              @click="copyStyle()">{{btnCopyLabel}}</button>
+                 </div>
             </div>
           </div>
         </div>
