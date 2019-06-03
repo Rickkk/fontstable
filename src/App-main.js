@@ -10,29 +10,29 @@ import Vue from 'vue';
 // let = "abc";
 // import HelloComponent from './components/HelloComponent.vue'
 var fontAr = [
-'Roboto', 
-'Open Sans', 
-'Montserrat', 
-'Noto Serif SC', 
-'Roboto Condensed', 
-'Source Sans Pro', 
-'Oswald', 
+'Roboto',
+'Open Sans',
+'Montserrat',
+'Noto Serif SC',
+'Roboto Condensed',
+'Source Sans Pro',
+'Oswald',
 'PT Sans',
 'Roboto Slab',
 'Merriweather',
-'Noto Sans', 
-'Ubuntu', 
-'Open Sans Condensed', 
+'Noto Sans',
+'Ubuntu',
+'Open Sans Condensed',
 'Playfair Display',
-'Roboto Mono', 
+'Roboto Mono',
 'Lora',
 'PT Serif',
-'Arimo', 
-'PT Sans Narrow', 
-'Fira Sans', 
+'Arimo',
+'PT Sans Narrow',
+'Fira Sans',
 'Noto Serif',
-'Rubik', 
-'Lobster', 
+'Rubik',
+'Lobster',
 'Exo 2',
 'Arial',
 'Helvetica',
@@ -48,7 +48,7 @@ var fontAr = [
 'Comic Sans MS',
 'Trebuchet MS',
 'Arial Black',
-'Impact' 
+'Impact'
 ]
 export default {
     // components:{
@@ -113,6 +113,18 @@ export default {
     }
   },
    computed: {
+     isAbleCopy: function()
+     {
+      return this.selectedFonts.length > 0 ? 'btn-success': 'btn-danger';
+     },
+     marginBold: function()
+     {
+       return this.isItalic ? '60px' : 'unset';
+     },
+     boldLabel: function()
+     {
+       return this.isBold ? 'bold' : 'unset';
+     },
     selectedList: function()
     {
       return this.selectedFonts.join(', ');
